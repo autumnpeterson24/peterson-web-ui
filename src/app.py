@@ -9,6 +9,8 @@ Description:
     a dataframe. It takes a lot of time away from having to pour through documentation. I also figured out that using a config.toml allows for the website
     to be different colors.
     I also used the python black linter to clean up the code.
+
+    App url: https://autumnpeterson24-peterson-web-ui-srcapp-rstjyv.streamlit.app/
 """
 
 import streamlit as st
