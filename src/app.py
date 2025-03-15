@@ -26,7 +26,7 @@ consort_id = "jdr4mmn2"
 
 # Categories for both dataframe and chart to use ========================================
 st.sidebar.title("Select Run Category")
-categories = {"Any% Zip": zip_id, "All Gods": gods_id, "Defeat Consort": consort_id}
+categories = {"Any% Zip": zip_id, "Two Gods": gods_id, "Defeat Consort": consort_id}
 
 selected_category = st.sidebar.radio(
     "Choose a Category", list(categories.keys())
@@ -57,7 +57,7 @@ def create_leaderboards() -> None:
         st.write("An error occurred when connecting...")
         return None
 
-    st.header("⚔️ Elden Ring Speedrun Leaderboard ⚔️")  # header to nicely fit everything
+    st.header(f"⏰ {selected_category} Leaderboard ⏰")  # header for labeling which run over the dataframe
 
     if len(leaderboard) >= 10:
         top_10_toggle = st.toggle(
@@ -128,7 +128,21 @@ def create_chart() -> None:
 
         st.altair_chart(chart)
 
+def display_category_details():
+    """Fetch and display category description and rules"""
+    category_details = ef.fetch_category_details(categories[selected_category])
+    
+    if category_details:
+        st.header(f"{category_details['name']} Speedrun Details & Info")
+        st.write(f"**Description Link:** {category_details['description']}")
+        st.write(f"**Rules:** {category_details['rules']}")
+    else:
+        st.write("Failed to load category details.")
+
+
 
 # Create Leaderboard and Charts ======================================================================
+st.title("⚔️ Elden Ring Speedruns ⚔️")
+display_category_details()
 create_leaderboards()
 create_chart()
