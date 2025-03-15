@@ -57,7 +57,9 @@ def create_leaderboards() -> None:
         st.write("An error occurred when connecting...")
         return None
 
-    st.header(f"⏰ {selected_category} Leaderboard ⏰")  # header for labeling which run over the dataframe
+    st.header(
+        f"⏰ {selected_category} Leaderboard ⏰"
+    )  # header for labeling which run over the dataframe
 
     if len(leaderboard) >= 10:
         top_10_toggle = st.toggle(
@@ -103,7 +105,6 @@ def create_chart() -> None:
 
     player_count["Appearances"] = player_count["Appearances"].astype(int)
 
-
     top_5 = player_count.head(5)  # returns the first 5 most occuring players
 
     show_chart = st.checkbox(
@@ -115,30 +116,33 @@ def create_chart() -> None:
             "Top 5 Most Recurring Players"
         )  # chart for displaying the most occuring players
 
-
         chart = (
             alt.Chart(top_5)
             .mark_bar(color="goldenrod")
             .encode(
-                x=alt.X("Appearances:Q", title="Number of Times on Leaderboard", axis=alt.Axis(format="d")),
-                y=alt.Y("Player:N", sort="-x", title="Player Name")
+                x=alt.X(
+                    "Appearances:Q",
+                    title="Number of Times on Leaderboard",
+                    axis=alt.Axis(format="d"),
+                ),
+                y=alt.Y("Player:N", sort="-x", title="Player Name"),
             )
             .properties(width=700, height=400)
         )
 
         st.altair_chart(chart)
 
-def display_category_details():
+
+def display_category_details() -> None:
     """Fetch and display category description and rules"""
     category_details = ef.fetch_category_details(categories[selected_category])
-    
+
     if category_details:
         st.header(f"{category_details['name']} Speedrun Details & Info")
         st.write(f"**Description Link:** {category_details['description']}")
         st.write(f"**Rules:** {category_details['rules']}")
     else:
         st.write("Failed to load category details.")
-
 
 
 # Create Leaderboard and Charts ======================================================================

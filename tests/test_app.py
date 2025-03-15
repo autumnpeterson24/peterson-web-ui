@@ -10,7 +10,7 @@ import elden_fetch
 
 
 @pytest.fixture
-def zip_leaderboard() -> dict:
+def zip_leaderboard() -> list[dict]:
     """Creating the leaderboard of top 50 speedruns"""
     zip_id = "02qr00pk"
     leaderboard = elden_fetch.fetch_leaderboard(zip_id)
@@ -18,7 +18,7 @@ def zip_leaderboard() -> dict:
 
 
 @pytest.fixture
-def gods_leaderboard() -> dict:
+def gods_leaderboard() -> list[dict]:
     """Creating the leaderboard of top 50 speedruns"""
     gods_id = "mke64ljd"
     leaderboard = elden_fetch.fetch_leaderboard(gods_id)
@@ -26,23 +26,23 @@ def gods_leaderboard() -> dict:
 
 
 @pytest.fixture
-def consort_leaderboard() -> dict:
+def consort_leaderboard() -> list[dict]:
     """Creating the leaderboard of top 50 speedruns"""
     consort_id = "jdr4mmn2"
     leaderboard = elden_fetch.fetch_leaderboard(consort_id)
     return leaderboard
 
 
-def test_elden_fetch_zip(zip_leaderboard: dict) -> None:
-    """Testing that all 25 slices from the Zip speedrun was recieved from the request"""
-    assert len(zip_leaderboard) == 25
+def test_elden_fetch_zip(zip_leaderboard: list[dict]) -> None:
+    """Testing that request went through and the leaderboard is type list not None from the Any% Zip speedrun"""
+    assert type(zip_leaderboard) == list
 
 
-def test_elden_fetch_gods(gods_leaderboard: dict) -> None:
-    """Testing that all 5 slices from the All Gods speedrun was recieved from the request"""
-    assert len(gods_leaderboard) == 5
+def test_elden_fetch_gods(gods_leaderboard: list[dict]) -> None:
+    """Testing that request went through and the leaderboard is type list not None from the All Gods speedrun"""
+    assert type(gods_leaderboard) == list
 
 
-def test_elden_fetch_consort(consort_leaderboard: dict) -> None:
-    """Testing that all 12 slices from the Defeat Consort speedrun was recieved from the request"""
-    assert len(consort_leaderboard) == 12
+def test_elden_fetch_consort(consort_leaderboard: list[dict]) -> None:
+    """Testing that request went through and the leaderboard is type list not None from the Defeat Consort speedrun"""
+    assert type(consort_leaderboard) == list

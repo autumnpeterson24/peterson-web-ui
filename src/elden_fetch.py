@@ -97,7 +97,8 @@ def fetch_leaderboard(category_id: str) -> list[dict] | None:
     ) as e:  # if there is a request exception a request error is thrown (like no internet connection)
         print("Request error:", e)
         return None
-    
+
+
 @st.cache_data(ttl=300)  # Cache data for 5 minutes
 def fetch_category_details(category_id: str) -> dict | None:
     """Fetches the description and rules for a given category ID"""
@@ -115,7 +116,8 @@ def fetch_category_details(category_id: str) -> dict | None:
             print("Failed to fetch category details:", response.status_code)
             return None
 
-    except requests.exceptions.RequestException as e: # exception if fail to get request
+    except (
+        requests.exceptions.RequestException
+    ) as e:  # exception if fail to get request
         print("Request error:", e)
         return None
-
