@@ -1,0 +1,4 @@
+.venv
+.pytest-cache
+tests/**
+pytest.ini
