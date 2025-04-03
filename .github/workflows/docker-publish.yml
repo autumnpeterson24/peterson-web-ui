@@ -5,7 +5,11 @@ name: Docker
 # separate terms of service, privacy policy, and support
 # documentation.
 
-on:
+on: # only runs until after the tests pass when testing the app (python-app.yml)
+  workflow_run:
+    workflows: [Test Streamlit App]
+    types:
+      - completed
   schedule:
     - cron: '17 13 * * *'
   push:
