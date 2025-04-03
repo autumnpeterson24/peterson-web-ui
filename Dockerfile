@@ -13,5 +13,5 @@ EXPOSE 8501
 RUN useradd -m app
 USER app
 
-# have to use commands to run streamlit app
+# have to use commands to run streamlit app remember to use -p 8501:8501 if want to run container
 CMD ["streamlit", "run", "src/app.py", "--server.port=8501", "8501"]
