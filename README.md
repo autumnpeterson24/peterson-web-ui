@@ -1,6 +1,6 @@
 # peterson-web-ui
-![python-app-tests](https://github.com/autumnpeterson24/peterson-web-ui/actions/workflows/python-app-tests.yml/badge.svg)
-![docker-publish](https://github.com/autumnpeterson24/peterson-web-ui/actions/workflows/docker-publish.yml/badge.svg)
+![python-app-tests](https://github.com/autumnpeterson24/peterson-web-ui/actions/workflows/python-app-tests.yml/badge.svg?event=push)
+![docker-publish](https://github.com/autumnpeterson24/peterson-web-ui/actions/workflows/docker-publish.yml/badge.svg?event=push)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Web UI application for SE320 Module 6 homework.
