@@ -1,4 +1,4 @@
-FROM python:3.11
+FROM python:3.13-slim
 WORKDIR /usr/local/app
 
 # making sure to copy in and run requirements
