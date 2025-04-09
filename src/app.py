@@ -31,10 +31,15 @@ st.markdown("""
     <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
 """, unsafe_allow_html=True)
 
-def local_css(file_name: str)->None:
-    """ Read in the css style format from assets to use for the API """
-    with open(file_name) as f:
-        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+def local_css(file_name: str) -> None:
+    """ Read in the CSS file and apply it to the app """
+    try:
+        css_path = Path(__file__).parent / file_name  # Uses the file's directory
+        with open(css_path) as f:
+            st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+    except FileNotFoundError:
+        st.error(f"CSS file {file_name} not found!")
+
 
 local_css("assets/styles.css") # load in the styles
 
