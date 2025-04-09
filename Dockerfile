@@ -6,6 +6,10 @@ COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY src ./src
+
+# Copy the .streamlit config folder to change the dark mode and color of buttons
+COPY .streamlit ./.streamlit
+
 # exposing to port 8501
 EXPOSE 8501
 
