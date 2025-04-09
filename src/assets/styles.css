@@ -1,0 +1,159 @@
+/* === IMPORT FANTASY FONT === */
+/* Chat GPT helped me with implementing CSS to change the style of my website and customize the frontend a lot more. */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap');
+
+/* === BACKGROUND AND GLOBAL STYLING === */
+.stApp {
+    background-image: linear-gradient(to bottom, rgba(0, 31, 32, 0.6), rgba(0, 31, 31, 0.9)),
+                      url("https://images5.alphacoders.com/115/thumb-1920-1151243.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    color: #f0e9dc;
+    font-family: 'Cinzel', serif !important;
+}
+
+/* === GLOBAL FONT FORCE === */
+html, body, [class*="st-"], .stApp, .block-container, .main, .css-18e3th9, .css-1v0mbdj {
+    font-family: 'Cinzel', serif !important;
+    letter-spacing: 0.5px;
+    font-weight: 400;
+}
+
+/* === OVERLAY (FOR EXTRA CONTRAST) === */
+.stApp::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: -1;
+}
+
+/* === TEXT BLOCKS AND HEADERS === */
+h1, h2, h3, h4, h5, h6,
+.stMarkdown, .stTitle, .stHeader, .stSubheader, .stText, .stCaption,
+.css-10trblm, .css-1v0mbdj {
+    font-family: 'Cinzel', serif !important;
+    /* background-color: rgba(0, 0, 0, 0.4); */
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: #f0e9dc;
+}
+
+/* === SIDEBAR === */
+section[data-testid="stSidebar"] {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-right: 2px solid goldenrod;
+}
+section[data-testid="stSidebar"] *,
+section[data-testid="stSidebar"] label {
+    color: #f0e9dc !important;
+    font-family: 'Cinzel', serif !important;
+}
+
+/* === BUTTONS === */
+button, .stButton > button, .css-1emrehy, .css-1cpxqw2 {
+    background-color: goldenrod !important;
+    color: black !important;
+    font-weight: bold !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 0.5rem 1rem !important;
+    font-family: 'Cinzel', serif !important;
+}
+button:hover, .stButton > button:hover {
+    background-color: #e6b800 !important;
+    color: black !important;
+}
+
+/* === RADIO + TOGGLES === */
+div[data-baseweb="radio"] {
+    background-color: rgba(255, 204, 0, 0.2);
+    padding: 10px;
+    border-radius: 10px;
+}
+div[data-baseweb="radio"] label[data-selected="true"] {
+    background-color: goldenrod;
+    color: black;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-family: 'Cinzel', serif !important;
+}
+div[data-testid="stToggle"] {
+    background-color: rgba(255, 204, 0, 0.1);
+    border-radius: 20px;
+    padding: 5px;
+}
+div[data-testid="stToggle"] > div[role="switch"][aria-checked="true"] {
+    background-color: goldenrod !important;
+}
+
+/* === STREAMLIT DATAFRAME STYLING === */
+.css-1d391kg {  /* Streamlit DataFrame container */
+    background-color: #2a2a2a !important;  /* Dark gray background */
+    color: #f0e9dc;  /* Light text color */
+    border-radius: 8px;
+}
+
+/* Table rows */
+.css-1d391kg table tr {
+    background-color: #333333 !important;  /* Darker gray for rows */
+    color: #f0e9dc;  /* Light text color for rows */
+}
+
+/* === STREAMLIT DATAFRAME STYLING === */
+div[data-testid="stDataFrame"] {  
+    background-color: #2a2a2a !important;  /* Dark gray background */
+    color: #f0e9dc !important;  /* Light text color */
+    border-radius: 8px !important;
+}
+
+/* Table rows */
+div[data-testid="stDataFrame"] table tr {
+    background-color: #333333 !important;  /* Darker gray for rows */
+    color: #f0e9dc !important;  /* Light text color for rows */
+}
+
+/* Table header */
+div[data-testid="stDataFrame"] th {
+    background-color: #444444 !important;  /* Slightly lighter gray for header */
+    color: #f0e9dc !important;  /* Light text color for header */
+    font-weight: bold !important;
+}
+
+/* Table cell styling */
+div[data-testid="stDataFrame"] td {
+    padding: 0.5rem !important;  /* Padding for readability */
+    border-bottom: 1px solid #555555 !important;  /* Light border for separation */
+}
+
+/* Table hover effect */
+div[data-testid="stDataFrame"] tr:hover {
+    background-color: #555555 !important;  /* Slightly lighter gray on hover */
+}
+
+
+/* === SCROLLBAR === */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: goldenrod;
+    border-radius: 4px;
+}
+
+/* === STREAMLIT TOP HEADER === */
+header[data-testid="stHeader"] {
+    background-color: rgba(0, 0, 0, 0.85); 
+    border-bottom: 1px solid goldenrod;
+    color: #f0e9dc;
+}
+header[data-testid="stHeader"] * {
+    color: #f0e9dc !important;
+    font-family: 'Cinzel', serif !important;
+}

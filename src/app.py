@@ -17,12 +17,26 @@ import streamlit as st
 import elden_fetch as ef
 import pandas as pd  # to use dataframe and display data
 import altair as alt  # to use in the creation of the chart
+import streamlit as st
+from pathlib import Path
 
 # Elden Ring's category ID for Any% Zip and All Gods Speedruns =========================
 zip_id = "02qr00pk"
 gods_id = "mke64ljd"
 consort_id = "jdr4mmn2"
 # ========================================================================================
+
+# Inject Google Font and CSS =============================================================
+st.markdown("""
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+""", unsafe_allow_html=True)
+
+def local_css(file_name: str)->None:
+    """ Read in the css style format from assets to use for the API """
+    with open(file_name) as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+local_css("assets/styles.css") # load in the styles
 
 # Categories for both dataframe and chart to use ========================================
 st.sidebar.title("Select Run Category")
@@ -58,7 +72,7 @@ def create_leaderboards() -> None:
         return None
 
     st.header(
-        f"⏰ {selected_category} Leaderboard ⏰"
+        f"{selected_category} Leaderboard"
     )  # header for labeling which run over the dataframe
 
     if len(leaderboard) >= 10:
@@ -146,7 +160,7 @@ def display_category_details() -> None:
 
 
 # Create Leaderboard and Charts ======================================================================
-st.title("⚔️ Elden Ring Speedruns ⚔️")
+st.title("Elden Ring Speedruns")
 display_category_details()
 create_leaderboards()
 create_chart()
