@@ -26,6 +26,18 @@ gods_id = "mke64ljd"
 consort_id = "jdr4mmn2"
 # ========================================================================================
 
+# Adding little icon for app ========================================================================================
+
+st.set_page_config(
+    page_title="Elden Ring Speedruns",
+    page_icon="assets/favicon.png",  
+    layout="wide"
+)
+
+
+# =======================================================================================
+
+
 # Inject Google Font and CSS =============================================================
 st.markdown("""
     <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
@@ -103,10 +115,18 @@ def create_leaderboards() -> None:
         columns={"index": "Place"}
     )  # rename the index colum to be Place of player
 
-    st.dataframe(
-        leaderboard_df, hide_index=True
-    )  # create the dataframe of all the top runs
+    # Convert video links to markdown
+    leaderboard_df["Video_Link"] = leaderboard_df["Video_Link"].apply(
+    lambda x: f"[Watch Run]({x})" if x != "No Video" else "No Video"
+    )
 
+    leaderboard_df.rename(columns={"Video_Link": "Video"}, inplace=True)
+    leaderboard_df.rename(columns={"Player_Name": "Player Name"}, inplace=True)
+    leaderboard_df.rename(columns={"Run_Time": "Run Time"}, inplace=True)
+
+
+# Display using HTML to preserve markdown links
+    st.write(leaderboard_df.to_markdown(index=False), unsafe_allow_html=True)
 
 def create_chart() -> None:
     """Creating the chart that tracks the appearances of each speedrunner and how many times they appear on the leaderboard"""
@@ -164,8 +184,26 @@ def display_category_details() -> None:
         st.write("Failed to load category details.")
 
 
+
 # Create Leaderboard and Charts ======================================================================
-st.title("Elden Ring Speedruns")
-display_category_details()
-create_leaderboards()
-create_chart()
+# st.title("Elden Ring Speedruns")
+# display_category_details()
+# create_leaderboards()
+# create_chart()
+# Tabs: Home and Leaderboard
+tabs = st.tabs(["Home", "Leaderboard & Charts"])
+
+with tabs[0]:  # Home Tab
+    st.title("Arise, Ye Speedy Tarnished!")
+    st.write("""
+        Track the fastest Tarnished across multiple categories!
+        This app pulls live data from [speedrun.com](https://www.speedrun.com/eldenring) and visualizes leaderboards and player stats.
+    """)
+    st.image("https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGJudDR4cGVoeG0yam5uczI1M2VvYXUxNWVvMnp2YXk1ZXVyZzR4eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/FiXDjsCdyFSKKVfp7f/giphy.gif", 
+             caption="Become Elden Lord (Unreasonably)", use_container_width=True)
+
+with tabs[1]:  # Leaderboard Tab
+    st.title("Elden Ring Speedruns")
+    display_category_details()
+    create_leaderboards()
+    create_chart()

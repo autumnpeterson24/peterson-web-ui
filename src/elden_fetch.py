@@ -1,5 +1,5 @@
 """
-Program: app.py
+Program: elden_fetch.py
 Author: Autumn Peterson
 Date: 3/17/2025
 Description:
@@ -76,9 +76,14 @@ def fetch_leaderboard(category_id: str) -> list[dict] | None:
 
                 formatted_time = f"{hours:02}:{minutes:02}:{seconds:02}"
 
+                video = run["run"].get("videos", {}).get("links", [{}])[0].get("uri", "No Video")
+
                 run = dict(
-                    Player_Name=player_name, Run_Time=formatted_time
-                )  # create a dict for each run to add to the list
+                    Player_Name=player_name,
+                    Run_Time=formatted_time,
+                    Video_Link=video
+                )
+
                 player_runs.append(run)
 
             return player_runs
