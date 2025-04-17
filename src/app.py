@@ -186,11 +186,7 @@ def display_category_details() -> None:
 
 
 # Create Leaderboard and Charts ======================================================================
-# st.title("Elden Ring Speedruns")
-# display_category_details()
-# create_leaderboards()
-# create_chart()
-# Tabs: Home and Leaderboard
+
 tabs = st.tabs(["Home", "Leaderboard & Charts"])
 
 with tabs[0]:  # Home Tab
@@ -199,8 +195,24 @@ with tabs[0]:  # Home Tab
         Track the fastest Tarnished across multiple categories!
         This app pulls live data from [speedrun.com](https://www.speedrun.com/eldenring) and visualizes leaderboards and player stats.
     """)
-    st.image("https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGJudDR4cGVoeG0yam5uczI1M2VvYXUxNWVvMnp2YXk1ZXVyZzR4eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/FiXDjsCdyFSKKVfp7f/giphy.gif", 
-             caption="Become Elden Lord (Unreasonably)", use_container_width=True)
+
+    # st.image("https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGJudDR4cGVoeG0yam5uczI1M2VvYXUxNWVvMnp2YXk1ZXVyZzR4eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/FiXDjsCdyFSKKVfp7f/giphy.gif", 
+    #          caption="Become Elden Lord (Fast)", width=400)
+
+    st.markdown(
+        """
+        <div style="display: flex; flex-direction: column; align-items: center;">
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGJudDR4cGVoeG0yam5uczI1M2VvYXUxNWVvMnp2YXk1ZXVyZzR4eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/FiXDjsCdyFSKKVfp7f/giphy.gif"
+                alt="Become Elden Lord (Unreasonably)" width="500">
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: gray;">
+                <em>Become Elden Lord (Fast)</em>
+            </p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+
 
 with tabs[1]:  # Leaderboard Tab
     st.title("Elden Ring Speedruns")
